@@ -52,11 +52,11 @@ class PresenterResolver
 	{
 		if ($this->presenterFactory === null) {
 			if ($this->mapping !== []) {
-				$this->presenterFactory = new PresenterFactory();
-				$this->presenterFactory->setMapping($this->mapping);
+				$presenterFactory = new PresenterFactory();
+				$presenterFactory->setMapping($this->mapping);
 			} elseif ($this->containerResolver->getContainer() !== null) {
-				$this->presenterFactory = $this->containerResolver->getContainer()->getByType(IPresenterFactory::class);
-				if (!$this->presenterFactory instanceof IPresenterFactory) {
+				$presenterFactory = $this->containerResolver->getContainer()->getByType(IPresenterFactory::class);
+				if (!$presenterFactory instanceof IPresenterFactory) {
 					throw new ShouldNotHappenException('Invalid type of IPresenterFactory from container');
 				}
 			} else {
@@ -65,6 +65,7 @@ class PresenterResolver
 					' Please provide explicit mappings in parameters.nette.applicationMapping or use parameters.nette.containerLoader to load it automatically.'
 				);
 			}
+			$this->presenterFactory = $presenterFactory;
 		}
 		return $this->presenterFactory;
 	}
