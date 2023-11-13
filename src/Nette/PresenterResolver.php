@@ -56,8 +56,10 @@ class PresenterResolver
 				$this->presenterFactory->setMapping($this->mapping);
 			} elseif ($this->containerResolver->getContainer() !== null) {
 				$this->presenterFactory = $this->containerResolver->getContainer()->getByType(IPresenterFactory::class);
-			}
-			if ($this->presenterFactory === null) {
+				if (!$this->presenterFactory instanceof IPresenterFactory) {
+					throw new ShouldNotHappenException('Invalid type of IPresenterFactory from container');
+				}
+			} else {
 				throw new PresenterResolvingNotAvailableException(
 					'Cannot resolve presenter, no mapping is defined.' .
 					' Please provide explicit mappings in parameters.nette.applicationMapping or use parameters.nette.containerLoader to load it automatically.'
