@@ -8,11 +8,11 @@
 * [Nette Framework](https://nette.org/)
 
 This extension provides following features:
-* Validate parameters passed to 'link()', 'lazyLink()', 'redirect()', 'redirectPermanent()', 'forward()', 'isLinkCurrent()' and 'canonicalize()' methods
+* Validate parameters passed to `link()`, `lazyLink()`, `redirect()`, `redirectPermanent()`, `forward()`, `isLinkCurrent()` and `canonicalize()` methods
 * Works for presenters, components and 'LinkGenerator' service
 * Checks if passed destination is valid and points to existing presenter, action or signal
-* Checks if passed link parameters are valid and match relevant 'action*()', 'render*()' or 'handle*()' method signature
-* Checks also links to sub-components of known types (createComponent*() method must exists)
+* Checks if passed link parameters are valid and match relevant `action*()`, `render*()` or `handle*()` method signature
+* Checks also links to sub-components of known types (`createComponent*()` method must exists)
 
 ## Installation
 
