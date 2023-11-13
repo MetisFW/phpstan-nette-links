@@ -62,7 +62,7 @@ class PresenterResolver
 			} else {
 				throw new PresenterResolvingNotAvailableException(
 					'Cannot resolve presenter, no mapping is defined.' .
-					' Please provide explicit mappings in parameters.nette.applicationMapping or use parameters.nette.containerLoader to load it automatically.'
+					' Please provide explicit mappings in parameters.netteLinks.applicationMapping or use parameters.netteLinks.containerLoader to load it automatically.'
 				);
 			}
 			$this->presenterFactory = $presenterFactory;
@@ -82,13 +82,13 @@ class PresenterResolver
 			foreach ($this->mapping as $module => $mask) {
 				if (is_string($mask)) {
 					if (preg_match('#^\\\\?([\w\\\\]*\\\\)?(\w*\*\w*?\\\\)?([\w\\\\]*\*\w*)$#D', $mask, $m) !== 1) {
-						throw new ShouldNotHappenException(sprintf("Invalid mapping mask '%s' in parameters.nette.applicationMapping.", $mask));
+						throw new ShouldNotHappenException(sprintf("Invalid mapping mask '%s' in parameters.netteLinks.applicationMapping.", $mask));
 					}
 					$convertedMapping[$module] = [$m[1], $m[2] !== '' ? $m[2] : '*Module\\', $m[3]];
 				} elseif (is_array($mask) && count($mask) === 3) { /** @phpstan-ignore-line */
 					$convertedMapping[$module] = [$mask[0] !== '' ? $mask[0] . '\\' : '', $mask[1] . '\\', $mask[2]];
 				} else {
-					throw new PresenterResolvingException(sprintf('Invalid mapping mask for module %s in parameters.nette.applicationMapping.', $module));
+					throw new PresenterResolvingException(sprintf('Invalid mapping mask for module %s in parameters.netteLinks.applicationMapping.', $module));
 				}
 			}
 			return $convertedMapping;
@@ -159,7 +159,7 @@ class PresenterResolver
 		if (!$presenterFactory instanceof PresenterFactory) {
 			throw new PresenterResolvingException(
 				'PresenterFactory in your container is not instance of Nette\Application\PresenterFactory. We cannot get mapping from it.' .
-				' Either set your mappings explicitly in parameters.nette.applicationMapping ' .
+				' Either set your mappings explicitly in parameters.netteLinks.applicationMapping ' .
 				' or replace service nettePresenterResolver with your own override of getPresenterClass() and/or unformatPresenterClass().'
 			);
 		}
