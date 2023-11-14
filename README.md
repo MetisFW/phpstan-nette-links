@@ -1,13 +1,16 @@
-# Nette Framework class reflection extension for PHPStan
+# Nette Framework link validation for PHPStan
 
-[![Build](https://github.com/phpstan/phpstan-nette/workflows/Build/badge.svg)](https://github.com/phpstan/phpstan-nette/actions)
-[![Latest Stable Version](https://poser.pugx.org/phpstan/phpstan-nette/v/stable)](https://packagist.org/packages/phpstan/phpstan-nette)
+[![Build](https://github.com/metisfw/phpstan-nette-links/workflows/Build/badge.svg)](https://github.com/phpstan/phpstan-nette/actions)
 [![License](https://poser.pugx.org/phpstan/phpstan-nette/license)](https://packagist.org/packages/phpstan/phpstan-nette)
 
 * [PHPStan](https://phpstan.org/)
 * [Nette Framework](https://nette.org/)
 
-This extension provides following features:
+Check links in your Nette Framework applications using PHPStan.
+
+![Preview](docs/preview.png)
+
+## Features
 * Validate parameters passed to `link()`, `lazyLink()`, `redirect()`, `redirectPermanent()`, `forward()`, `isLinkCurrent()` and `canonicalize()` methods
 * Works for presenters, components and 'LinkGenerator' service
 * Checks if passed destination is valid and points to existing presenter, action or signal
