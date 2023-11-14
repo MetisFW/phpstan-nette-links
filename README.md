@@ -65,7 +65,7 @@ Container loader can be used to create instance of Nette application DI containe
 Example:
 ```neon
 parameters:
-    nette:
+    netteLinks:
         containerLoader: './containerLoader.php'
 ```
 
@@ -84,7 +84,7 @@ Application mapping is used to map presenter identfiers to classes in link check
 Example:
 ```neon
 parameters:
-    nette:
+    netteLinks:
         applicationMapping:
             *: App\Presenters\*\*Presenter
 ```
