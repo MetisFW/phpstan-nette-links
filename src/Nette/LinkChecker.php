@@ -261,7 +261,7 @@ class LinkChecker
 			}
 			$targetClassDir = dirname($targetClassFileName);
 			$templateDir = is_dir($targetClassDir . '/templates') ? $targetClassDir : dirname($targetClassDir);
-			$presenterWithoutModule = substr($presenter, (int)strrpos($presenter, ':') + 1);
+			$presenterWithoutModule = substr($presenter, (int) strrpos($presenter, ':') + 1);
 			$templates = [
 				sprintf('%s/templates/%s/%s.latte', $templateDir, $presenterWithoutModule, $action),
 				sprintf('%s/templates/%s.%s.latte', $templateDir, $presenterWithoutModule, $action),
