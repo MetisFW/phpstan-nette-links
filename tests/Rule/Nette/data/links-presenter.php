@@ -56,3 +56,6 @@ $abstractPresenter = $presenter->getPresenter();
 $abstractPresenter->link('this');
 $abstractPresenter->link(':Test:default');
 $abstractPresenter->link('Test:default');
+
+$presenter->link(':TestModule:Test:implicit');
+$presenter->link(':TestModule:Test:withParam', 'paramValue');

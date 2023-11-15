@@ -32,3 +32,6 @@ $linkGenerator->link('this!');
 $linkGenerator->link('signal!');
 
 $linkGenerator->link('Test:implicit');
+
+$linkGenerator->link('TestModule:Test:implicit');
+$linkGenerator->link('TestModule:Test:withParam', 'paramValue');

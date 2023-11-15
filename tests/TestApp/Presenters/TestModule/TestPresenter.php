@@ -7,4 +7,8 @@ use Nette\Application\UI\Presenter;
 class TestPresenter extends Presenter
 {
 
+	public function actionWithParam(string $param): void
+	{
+	}
+
 }

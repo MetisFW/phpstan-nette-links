@@ -31,7 +31,6 @@ use function is_array;
 use function is_callable;
 use function is_dir;
 use function is_file;
-use function ltrim;
 use function parse_str;
 use function preg_match;
 use function sprintf;
@@ -262,9 +261,10 @@ class LinkChecker
 			}
 			$targetClassDir = dirname($targetClassFileName);
 			$templateDir = is_dir($targetClassDir . '/templates') ? $targetClassDir : dirname($targetClassDir);
+			$presenterWithoutModule = substr($presenter, (int)strrpos($presenter, ':') + 1);
 			$templates = [
-				sprintf('%s/templates/%s/%s.latte', $templateDir, ltrim($presenter, ':'), $action),
-				sprintf('%s/templates/%s.%s.latte', $templateDir, ltrim($presenter, ':'), $action),
+				sprintf('%s/templates/%s/%s.latte', $templateDir, $presenterWithoutModule, $action),
+				sprintf('%s/templates/%s.%s.latte', $templateDir, $presenterWithoutModule, $action),
 			];
 			foreach ($templates as $template) {
 				if (is_file($template)) {
