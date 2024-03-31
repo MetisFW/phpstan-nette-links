@@ -52,7 +52,7 @@ class ComponentLinksRule extends LinksRule
 		$destinationArg = $args[0];
 		$paramArgs = array_slice($args, 1);
 
-		$destinations = $this->extractDestintionsFromArg($scope, $destinationArg);
+		$destinations = $this->extractDestinationsFromArg($scope, $destinationArg);
 		if (count($paramArgs) === 1 && $scope->getType($paramArgs[0]->value)->isArray()->yes()) {
 			$paramsVariants = $this->extractParamVariantsFromArrayArg($scope, $paramArgs[0] ?? null);
 		} else {

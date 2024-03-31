@@ -45,7 +45,7 @@ class LinkGeneratorLinksRule extends LinksRule
 		$destinationArg = $args[0];
 		$paramArgs = array_slice($args, 1);
 
-		$destinations = $this->extractDestintionsFromArg($scope, $destinationArg);
+		$destinations = $this->extractDestinationsFromArg($scope, $destinationArg);
 		$paramsVariants = $this->extractParamVariantsFromArrayArg($scope, $paramArgs[0] ?? null);
 		return $this->linkChecker->checkLinkVariants($scope, [null], $methodName, $destinations, $paramsVariants);
 	}

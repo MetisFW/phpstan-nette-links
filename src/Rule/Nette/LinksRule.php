@@ -27,7 +27,7 @@ abstract class LinksRule implements Rule
 	/**
 	 * @return array<string>
 	 */
-	protected function extractDestintionsFromArg(Scope $scope, ?Arg $arg): array
+	protected function extractDestinationsFromArg(Scope $scope, ?Arg $arg): array
 	{
 		if ($arg === null) {
 			return [];
