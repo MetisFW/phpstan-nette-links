@@ -336,7 +336,7 @@ class LinkChecker
 	}
 
 	/**
-	 * @param array<int|string, Type> $params
+	 * @param array<int|string, Type>|null $params
 	 */
 	private function validateSignal(
 		Scope $scope,
@@ -361,6 +361,7 @@ class LinkChecker
 					new InvalidLinkException(sprintf("Unknown signal '%s', missing handler %s::%s()", $signal, $targetClass, $signalMethod))
 				);
 			}
+			$params = $params ?? [];
 			$this->validateParams($scope, $targetClass, $signalMethod, $params);
 			//detect deprecated?
 		} else {
