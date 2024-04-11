@@ -10,3 +10,9 @@ includes:
 parameters:
 	excludePaths:
 		- tests/*/data/*
+	ignoreErrors:
+		-
+			message: '#Instanceof between Nette\\Application\\IPresenterFactory and Nette\\Application\\IPresenterFactory will always evaluate to true#'
+			path: '*/Nette/PresenterResolver.php'
+			reportUnmatched: false
+			count: 1

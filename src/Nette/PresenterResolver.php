@@ -56,7 +56,7 @@ class PresenterResolver
 				$presenterFactory->setMapping($this->mapping);
 			} elseif ($this->containerResolver->getContainer() !== null) {
 				$presenterFactory = $this->containerResolver->getContainer()->getByType(IPresenterFactory::class);
-				if (!$presenterFactory instanceof IPresenterFactory) { /** @phpstan-ignore-line */
+				if (!$presenterFactory instanceof IPresenterFactory) {
 					throw new ShouldNotHappenException('Invalid type of IPresenterFactory from container');
 				}
 			} else {
