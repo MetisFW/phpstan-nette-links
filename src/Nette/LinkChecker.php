@@ -7,7 +7,7 @@ use Nette\Application\UI\Presenter;
 use PHPStan\Analyser\Scope;
 use PHPStan\Reflection\ParametersAcceptorSelector;
 use PHPStan\Reflection\ReflectionProvider;
-use PHPStan\Rules\RuleError;
+use PHPStan\Rules\IdentifierRuleError;
 use PHPStan\Rules\RuleErrorBuilder;
 use PHPStan\Type\ArrayType;
 use PHPStan\Type\Constant\ConstantStringType;
@@ -58,7 +58,7 @@ class LinkChecker
 	 * @param array<string|null> $currentClasses
 	 * @param array<string> $destinations
 	 * @param array<array<Type>|null> $paramsOptions
-	 * @return array<int, RuleError>
+	 * @return list<IdentifierRuleError>
 	 */
 	public function checkLinkVariants(Scope $scope, array $currentClasses, string $methodName, array $destinations, array $paramsOptions = [null]): array
 	{
@@ -79,7 +79,7 @@ class LinkChecker
 
 	/**
 	 * @param array<int|string, Type>|null $params
-	 * @return array<int, RuleError>
+	 * @return array<int, IdentifierRuleError>
 	 */
 	public function checkLink(Scope $scope, ?string $currentClass, string $methodName, string $destination, ?array $params = null): array
 	{
@@ -88,7 +88,7 @@ class LinkChecker
 
 	/**
 	 * @param array<int|string, Type>|null $params
-	 * @return array<string, RuleError>
+	 * @return array<string, IdentifierRuleError>
 	 */
 	public function checkLinkError(Scope $scope, ?string $currentClass, string $methodName, string $destination, ?array $params = null): array
 	{
@@ -381,7 +381,7 @@ class LinkChecker
 			}
 
 			$subComponentMethod = $targetClassReflection->getMethod($subComponentMethodName, $scope);
-			$subComponentType = ParametersAcceptorSelector::selectSingle($subComponentMethod->getVariants())->getReturnType();
+			$subComponentType = ParametersAcceptorSelector::combineAcceptors($subComponentMethod->getVariants())->getReturnType();
 			foreach ($subComponentType->getReferencedClasses() as $componentClass) {
 				$subComponentClassReflection = $this->reflectionProvider->getClass($componentClass);
 				if (!$subComponentClassReflection->isSubclassOf(Component::class)) {
